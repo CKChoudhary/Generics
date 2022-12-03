@@ -5,8 +5,8 @@ using WiredBrainCoffee.StorageApp.Entities;
 
 namespace WiredBrainCoffee.StorageApp.Repositories
 {
-    //Constraint helps to access base class property
-    public class GenericRepository<T> where T : class, IEntity
+   
+    public class ListRepository<T>: IRepository<T> where T:  IEntity
     {
         private readonly List<T> _items = new();
 
@@ -24,9 +24,9 @@ namespace WiredBrainCoffee.StorageApp.Repositories
 
         public void Save()
         {
-            foreach (var item  in _items)
+            foreach (var item in _items)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(item.Id);
             }
         }
 
@@ -35,5 +35,7 @@ namespace WiredBrainCoffee.StorageApp.Repositories
             _items.Remove(item);
         }
     }
+
+  
 
 }
