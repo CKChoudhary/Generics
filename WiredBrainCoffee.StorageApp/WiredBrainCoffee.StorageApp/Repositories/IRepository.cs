@@ -1,9 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using WiredBrainCoffee.StorageApp.Entities;
 
 namespace WiredBrainCoffee.StorageApp.Repositories
 {
+    public interface IWriteRepository<in T>
+    {
+        void Add(T item);
+        void Remove(T item);
+        void Save();
+    }
 
     public interface IReadRepository<out T>
     {
@@ -11,10 +16,8 @@ namespace WiredBrainCoffee.StorageApp.Repositories
         T GetById(int id);
     }
 
-    public interface IRepository<T>: IReadRepository<T> where T :IEntity
+    public interface IRepository<T> : IReadRepository<T>, IWriteRepository<T>
+        where T : IEntity
     {
-        void Add(T item);
-        void Save();
-        void Remove(T item);
     }
 }

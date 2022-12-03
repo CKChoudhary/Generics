@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using WiredBrainCoffee.StorageApp.Entities;
 
 namespace WiredBrainCoffee.StorageApp.Repositories
@@ -21,13 +18,12 @@ namespace WiredBrainCoffee.StorageApp.Repositories
 
         public IEnumerable<T> GetAll()
         {
-            return _dbSet.ToList();
+            return _dbSet.OrderBy(item => item.Id).ToList();
         }
 
         public T GetById(int id)
         {
             return _dbSet.Find(id);
-
         }
 
         public void Add(T item)
@@ -35,14 +31,14 @@ namespace WiredBrainCoffee.StorageApp.Repositories
             _dbSet.Add(item);
         }
 
-        public void Save()
-        {
-            _dbContext.SaveChanges();
-        }
-
         public void Remove(T item)
         {
             _dbSet.Remove(item);
+        }
+
+        public void Save()
+        {
+            _dbContext.SaveChanges();
         }
     }
 }
