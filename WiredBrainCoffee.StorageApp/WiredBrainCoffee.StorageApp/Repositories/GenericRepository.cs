@@ -4,10 +4,9 @@ using WiredBrainCoffee.StorageApp.Entities;
 
 namespace WiredBrainCoffee.StorageApp.Repositories
 {
-    public class GenericRepository<T, TKey>
+    public class GenericRepository<T>
     {
-        public TKey? Key { get; set; }
-        protected readonly List<T> _items = new();
+        private readonly List<T> _items = new();
 
         public void Add(T item)
         {
@@ -21,13 +20,11 @@ namespace WiredBrainCoffee.StorageApp.Repositories
                 Console.WriteLine(item);
             }
         }
-    }
 
-    public class EmployeeRepositoryWithRemove<T, TKey> : GenericRepository<T, TKey>
-    {
         public void Remove(T item)
         {
             _items.Remove(item);
         }
     }
+
 }
