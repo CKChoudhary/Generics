@@ -10,7 +10,7 @@ namespace WiredBrainCoffee.StorageApp
        
         static void Main(string[] args)
         {
-            var employeeRepository = new EmployeeRepositoryWithRemove<Employee>();
+            var employeeRepository = new EmployeeRepositoryWithRemove<Employee, int>();
             employeeRepository.Add(new Employee(){FirstName = "test"});
             employeeRepository.Save();
             Console.ReadLine();
