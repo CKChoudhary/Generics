@@ -1,12 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using WiredBrainCoffee.StorageApp.Entities;
 
 namespace WiredBrainCoffee.StorageApp.Repositories
 {
-    public class GenericRepository<T>
+    //Constraint helps to access base class property
+    public class GenericRepository<T> where T : EntityBase
     {
         private readonly List<T> _items = new();
+
+        public T GetById(int id)
+        {
+            return _items.Single(item => item.Id == id);
+        }
 
         public void Add(T item)
         {
