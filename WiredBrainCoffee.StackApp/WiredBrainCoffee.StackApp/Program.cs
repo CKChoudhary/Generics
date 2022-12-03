@@ -6,7 +6,23 @@ namespace WiredBrainCoffee.StackApp
     {
         static void Main(string[] args)
         {
-            var stack = new SimpleStack();
+            StackDoubles();
+            StackStrings();
+
+            Console.ReadLine();
+        }
+
+        private static void StackStrings()
+        {
+            var stack = new SimpleStack<string>();
+
+            stack.Push("Wired brain coffee");
+         
+        }
+
+        private static void StackDoubles()
+        {
+            var stack = new SimpleStack<double>();
 
             stack.Push(1.2);
             stack.Push(2.8);
@@ -14,7 +30,7 @@ namespace WiredBrainCoffee.StackApp
 
             double sum = 0.0;
 
-            while (stack.Count>0)
+            while (stack.Count > 0)
             {
                 double item = stack.Pop();
                 Console.WriteLine($"Item: {item}");
@@ -22,8 +38,6 @@ namespace WiredBrainCoffee.StackApp
             }
 
             Console.WriteLine($"Sum : {sum}");
-
-            Console.ReadLine();
         }
     }
 }
