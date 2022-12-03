@@ -10,7 +10,7 @@ namespace WiredBrainCoffee.StorageApp
        
         static void Main(string[] args)
         {
-            var employeeRepository = new EmployeeRepository();
+            var employeeRepository = new GenericRepository<Employee>();
             employeeRepository.Add(new Employee(){FirstName = "test"});
             employeeRepository.Save();
             Console.ReadLine();
